@@ -1,5 +1,19 @@
 <h1>Homepage</h1>
-<h2>language : {{fr}} </h2>
+{{!-- je recupère ma props passer dans index.js dans la route dynamique  
+qui render cette page home et je récupère la valeur de mes clef que j'ai 
+crée dans index
+ --}}
 
-<h3> title : {{title}} </h3>
+
+
+<div class="d-flex justify-content-center mt-5">
+  <div class="card" style="width: 18rem;">
+    <img src={{image}} class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">language : {{fr}} </h5>
+      <p class="card-text">title : {{title}} </p>
+      <a href="#" class="btn btn-primary">Go</a>
+    </div>
+  </div>
+</div>  
 {{!-- <p>{{fr.fr}} </p> --}}

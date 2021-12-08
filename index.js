@@ -7,24 +7,28 @@ const translate = require('./translate.json')
 const engine = require("express-handlebars").engine
 app.engine("handlebars", engine())
 app.set("view engine", "handlebars")
+app.use(express.static('public'));
 
 app.get('/langage', (req, res) => {
     res.json(translate);
 });
 
-
+// on crée une route dynamique quon recupère pour afficher les valeur 
+// des clef correspondante que j'ai passer comme des props dans le render
 app.get("/:lang?", (req,res) => {
+    // req.query permet de recupéré la valeur des clef url apres le ?
     // const {lang} = req.query
     let {lang} = req.params
     if(!lang || lang !== "fr" && lang !== "en" && lang !== "es" ){
         lang = "fr"
     }
-    console.log("valeur =>",lang);
+    // console.log("valeur =>",lang);
     res.render('home',{
-        
         fr:translate[lang].pageTitle,
-        title:translate[lang].title
+        title:translate[lang].title,
+        image:`/image/${lang}.jpg`
     } )
+    
 
 })
 
